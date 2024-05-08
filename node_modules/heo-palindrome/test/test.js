@@ -23,9 +23,9 @@ describe("Phrase", function() {
       assert(punctuatedPalindrome.palindrome());
     });
 
-    it("should return true for a palindrome with only punctuation", function() {
-      let onlyPunctuatedPalindrome = new Phrase("!.");
-      assert(onlyPunctuatedPalindrome.palindrome());
+    it("should return false for an empty string", function() {
+      let emptyPhrase = new Phrase("");
+      assert(!emptyPhrase.palindrome());
     });
   });
 });

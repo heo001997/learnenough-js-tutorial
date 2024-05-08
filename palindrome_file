@@ -1,0 +1,21 @@
+#!/Users/heo001997/.nvm/versions/node/v16.18.0/bin/node
+
+let fs = require("fs");
+let Phrase = require("heo-palindrome");
+
+let text = fs.readFileSync("phrases.txt", "utf-8");
+text.split("\n").forEach(function(line) {
+  let phrase = new Phrase(line);
+  if (phrase.palindrome()) {
+    console.log("palindrome detected:", line);
+    fs.appendFile('file.log', line + "\n", err => {
+      if (err) {
+        console.error(err);
+      } else {
+        // done!
+      }
+    });
+  }
+});
+
+

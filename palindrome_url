@@ -1,0 +1,19 @@
+#!/Users/heo001997/.nvm/versions/node/v16.18.0/bin/node
+
+let urllib = require("urllib");
+let Phrase = require("heo-palindrome");
+let url = 'https://cdn.learnenough.com/phrases.txt'
+
+urllib.request(url, { followRedirect: true }).then(function(response) {
+  console.log("Response status code:", response.status);
+  let body = response.data.toString();
+  console.log("Body:", body);
+  body.split("\n").forEach(function(line) {
+    let phrase = new Phrase(line);
+    if (phrase.palindrome()) {
+      console.log("palindrome detected:", line);
+    }
+  });
+}).catch(function(error) {
+  console.error("Error fetching data:", error);
+});
